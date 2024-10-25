@@ -17,7 +17,7 @@ WHERE
 -- Мы суммируем все километры этапов, которые прошли в 1997 году.
 -- Для этого используем функцию SUM() и фильтруем по году в столбце DateEtape.
 SELECT 
-    SUM(NbKm) AS total_kilometres -- Суммируем все километры (NbKm)
+    SUM(NbKm) AS er toutes les informations concernant les départementtotal_kilometres -- Суммируем все километры (NbKm)
 FROM 
     ETAPE
 WHERE 
