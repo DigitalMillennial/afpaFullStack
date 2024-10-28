@@ -44,18 +44,23 @@ try {
 ?>
 
 <div class="container mt-5">
-    <div class="row">
+<h3 style="font-weight: bold;">Liste des disques(15)</h3>
+    <div class="row">    
         <?php foreach ($discs as $disc): ?>
             <div class="col-md-6 d-flex mb-3">
                 <div class="me-3" style="flex-shrink: 0;">
                     <img src="pictures/<?=$disc->disc_picture?>" alt="<?=$disc->disc_title?>" class="img-fluid" style="max-width: 150px; height: auto;">
                 </div>
-                <div class="card-body d-flex flex-column ">
-                    <h5 class="card-title"><?=$disc->disc_title?></h5>
-                    <p class="card-text">Artiste: <?=$disc->artist_name?></p>
-                    <p class="card-text">Label: <?=$disc->disc_label?></p>
-                    <p class="card-text">Année: <?=$disc->disc_year?></p>                    
-                </div>
+                <div class="card-body d-flex flex-column pt-0 pb-0 mb-0">
+                    <h5 class="card-title mb-0" style="font-weight: bold;"><?=$disc->disc_title?></h5>
+                    <p class="card-text mb-0">Artiste: <?=$disc->artist_name?></p>
+                    <p class="card-text mb-0">Label: <?=$disc->disc_label?></p>
+                    <p class="card-text ">Année: <?=$disc->disc_year?></p> 
+                    <div class="d-flex justify-content-start align-items-center mt-2">
+                        <span></span> <!-- Пустое пространство, которое создаст отступ -->
+                        <a href="#" class="btn btn-primary btn-sm" style="border-radius: 5px;">Détails</a>
+                    </div>                   
+                </div>                
             </div>
         <?php endforeach; ?>
     </div>
