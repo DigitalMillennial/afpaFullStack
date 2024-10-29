@@ -27,7 +27,8 @@ try {
             a.artist_name, 
             d.disc_label, 
             d.disc_year, 
-            d.disc_genre 
+            d.disc_genre,
+            d.disc_id 
         FROM 
             disc d
         JOIN 
@@ -44,7 +45,13 @@ try {
 ?>
 
 <div class="container mt-5">
-<h3 style="font-weight: bold;">Liste des disques(15)</h3>
+    <div class="col-12 mb-3">
+        <div class="row  justify-content-between align-items-center">
+            <h3 style="font-weight: bold;">Liste des disques(15)</h3>
+            <button type="button" class="btn btn-primary" onclick="window.location.href='add_forma.php'">Ajouter</button>
+        </div>
+    </div>
+
     <div class="row">    
         <?php foreach ($discs as $disc): ?>
             <div class="col-md-6 d-flex mb-3">
@@ -58,7 +65,7 @@ try {
                     <p class="card-text ">Année: <?=$disc->disc_year?></p> 
                     <div class="d-flex justify-content-start align-items-center mt-2">
                         <span></span> <!-- Пустое пространство, которое создаст отступ -->
-                        <a href="#" class="btn btn-primary btn-sm" style="border-radius: 5px;">Détails</a>
+                        <a href="Details.php?disc_id=<?=$disc->disc_id?>" class="btn btn-primary btn-sm" style="border-radius: 5px;">Détails</a>
                     </div>                   
                 </div>                
             </div>

@@ -60,7 +60,7 @@ try {
                 <input type="file" name="picture" class="form-control-file" id="picture" required>
             </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
-            <a href="index.php" class="btn btn-secondary">Retour</a>
+            <a href="liste_des_disques.php" class="btn btn-secondary">Retour</a>
         </form>
     </div>
 
