@@ -20,10 +20,13 @@ try {
 }
 
 if (isset($_GET["disc_id"])) {
-    $requete = $record->prepare("SELECT d.disc_picture, d.disc_id, d.disc_title, d.disc_year, d.disc_label, d.disc_genre, d.disc_price, a.artist_name FROM disc d LEFT JOIN artist a ON d.artist_id = a.artist_id WHERE disc_id=?");
+    $requete = $record->prepare("SELECT d.disc_picture, d.disc_id, d.disc_title, d.disc_year, d.disc_label, d.disc_genre, d.disc_price, d.artist_id, a.artist_name FROM disc d LEFT JOIN artist a ON d.artist_id = a.artist_id WHERE disc_id=?");
     $requete->execute(array($_GET["disc_id"]));
     $disc = $requete->fetch(PDO::FETCH_OBJ);
 }
+
+// Получаем список всех артистов
+$artistsQuery = $record->query("SELECT artist_id, artist_name FROM artist");
 ?>
 <div class="container mt-5">
     <h3 style="font-weight: bold;">Modifier un vinyle</h3>
@@ -35,7 +38,14 @@ if (isset($_GET["disc_id"])) {
         </div>
         <div class="form-group">
             <label for="artist_id">Artiste</label>
-            <input type="text" name="artist_id" class="form-control" value="<?= $disc->artist_name ?>" id="artist_id" required>
+            <select name="artist_id" class="form-control" id="artist_id" required>
+                <?php
+                foreach ($artistsQuery as $artist) {
+                    $selected = ($artist['artist_id'] == $disc->artist_id) ? 'selected' : '';
+                    echo "<option value=\"{$artist['artist_id']}\" $selected>{$artist['artist_name']}</option>";
+                }
+                ?>
+            </select>
         </div>
         <div class="form-group">
             <label for="year">Year</label>
