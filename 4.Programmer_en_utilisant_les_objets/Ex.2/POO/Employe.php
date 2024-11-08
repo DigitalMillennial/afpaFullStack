@@ -10,9 +10,10 @@ class Employe {
     private $service;
     private $magasin; 
     private $voyage;
+    private $child_age;
 
     // Конструктор для инициализации данных
-    public function __construct($nom, $prenom, $embauche, $poste, $brut, $service, $magasin) {
+    public function __construct($nom, $prenom, $embauche, $poste, $brut, $service, $magasin,$child_age=[]) {
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->embauche = $embauche;
@@ -20,7 +21,8 @@ class Employe {
         $this->brut = $brut;
         $this->service = $service;
         $this->magasin = $magasin;
-        $this->voyage = "non";       
+        $this->voyage = "non";
+        $this->child_age = $child_age;       
     }
 
     public function getMagasin() {
@@ -52,6 +54,32 @@ class Employe {
         return $this->voyage;
     }
 
+       // Метод для вычисления cумма рождественского ваучера
+       public function child_age() {
+        if (empty($child_age)) {
+            $result  = "Aucun chèque accepté";
+        }
+        $cheque = ["20€"=>0,"30€"=>0,"50€"=>0];
+        foreach ($this->child_age as $child ){
+            if($child>0 && $child<=10){
+                $cheque ["20€"]++;
+            }elseif($child>=11 && $child<=15){
+                $cheque ["30€"]++;
+            }elseif($child>=16 && $child<=18){
+                $cheque ["50€"]++;
+            }elseif($child>18){
+               return $result  = "Aucun chèque accepté";
+            }
+            $result = "chèque Noël:. <br>" ;
+            foreach($cheque as $value=>$quantite){
+                if($quantite>0){
+                    $result .= $value . "-" .$quantite  . "pcs<br>";
+                }
+            }
+        }   
+        return $result;
+    }
+
     // Метод __toString() для вывода данных сотрудника
     public function __toString() {
         $bonus = $this->getBonus();  // Получаем бонус
@@ -69,7 +97,8 @@ class Employe {
                     <td>" . $anciennete . " Année</td>
                     <td>" . $this->magasin->getNomDuMagasin() ."</td> 
                     <td>" . $this->magasin->getrestau() ."</td> 
-                    <td>" . $this->voyage . "</td>                   
+                    <td>" . $this->voyage . "</td> 
+                    <td>" . $this->child_age() . "</td>                   
                 </tr>";
     }
 }

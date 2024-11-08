@@ -11,11 +11,11 @@ $store4 = new Stores("Magasin Marseillais", "40 Rue Paradis", "13000", "Marseill
 $store5 = new Stores("Magasin Lillois", "50 Grand Place", "59000", "Lille","Cantine");
 
 // Создаем 5 объектов сотрудников с разными данными
-$employee1 = new Employe("Lebowski", "Jeff", "2023-10-01", "Admin", "26000", "IT", $store1);
-$employee2 = new Employe("Smith", "John", "2020-05-15", "Manager", "45000", "HR", $store2);
-$employee3 = new Employe("Taylor", "Alicia", "2024-01-12", "Developer", "50000", "Tech", $store3);
-$employee4 = new Employe("Brown", "Mike", "2018-07-23", "Designer", "48000", "Marketing", $store4);
-$employee5 = new Employe("Davis", "Emily", "2017-03-30", "CEO", "75000", "Executive", $store5);
+$employee1 = new Employe("Lebowski", "Jeff", "2023-10-01", "Admin", "26000", "IT", $store1,[10,18]);
+$employee2 = new Employe("Smith", "John", "2020-05-15", "Manager", "45000", "HR", $store2,[2,8]);
+$employee3 = new Employe("Taylor", "Alicia", "2024-01-12", "Developer", "50000", "Tech", $store3,[19]);
+$employee4 = new Employe("Brown", "Mike", "2018-07-23", "Designer", "48000", "Marketing", $store4,[1]);
+$employee5 = new Employe("Davis", "Emily", "2017-03-30", "CEO", "75000", "Executive", $store5,[15]);
 
 $employee1 -> getvoyage();
 $employee2 -> getvoyage();
@@ -36,6 +36,7 @@ echo "<table border='1'>
             <th>Magasin</th>
             <th>Restauration</th>
             <th>Voyage</th>
+            <th>Chèque Noël</th>
         </tr>";
 
 echo $employee1;
