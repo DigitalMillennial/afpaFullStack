@@ -1,0 +1,389 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header-container {
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px 20px;
+  position: relative;
+}
+
+.header-container .logo {
+  position: absolute;
+  left: 20px;
+}
+
+.header-container .logo img {
+  width: 100px;
+}
+
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Строка поиска и фон */
+.premier {
+  position: relative;
+  height: 96vh; /* Высота экрана */
+  width: 100%;
+  overflow: hidden;
+  background-color: black;
+}
+
+.premier video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%; /* Заполняет всю ширину */
+  min-height: 100%; /* Заполняет всю высоту */
+  width: auto;
+  height: auto;
+  z-index: 0;
+  object-fit: cover; /* Гарантирует, что видео заполнит секцию */
+}
+
+.premier .container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+}
+
+.premier .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  z-index: 1;
+}
+
+.premier h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.premier a {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.premier a:hover {
+  background-color: #0056b3;
+}
+
+.premier .container {
+  position: relative;
+  z-index: 2;
+}
+
+.premier .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.search-container {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  z-index: 9;
+}
+
+.search-container input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px; /* Скругление только слева */
+  margin: 0;
+  width: 300px;
+}
+
+.search-container button {
+  padding: 11px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 0 5px 5px 0; /* Скругление только справа */
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+  background-color: #0056b3;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.categories-section {
+  position: relative;
+  height: auto; /* Убираем фиксированную высоту */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;  
+}
+
+
+.categories-container {
+  display: grid; /* Используем сетку */
+  grid-template-columns: repeat(3, 1fr); /* Три колонки */
+  grid-gap: 40px; /* Расстояние между элементами */
+  justify-content: center; /* Центрируем сетку по горизонтали */
+  align-items: center; /* Центрируем элементы в ячейках */
+}
+
+
+.category {
+  width: 300px;
+  height: 300px;
+  text-align: center;
+  background-color: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  transition: transform 0.3s, box-shadow 0.3s;
+  will-change: transform, box-shadow;
+  margin-bottom: 10px;
+}
+
+.category img {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.category p {
+  margin: 0;
+}
+
+/* Стиль для наименования товара */
+.category p:first-child {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* Стиль для цены */
+.price {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+/* Стиль для объема (cl) */
+.weight {
+  font-size: 16px;
+  color: #777; /* Тусклый цвет */
+}
+
+.order-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.minus-btn, .plus-btn {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.minus-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.quantity {
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+.category:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  background-color: #f0f0f0;
+}
+
+.footer {
+  background-color: #333;
+  padding: 0;
+  text-align: center;
+  min-height: 50px;
+}
+
+.socials-container {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.item-details {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  text-align: right;
+}
+
+.item-price {
+  margin-left: 15px;
+  text-align: right;
+  width: 80px;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  .header-container .logo {
+    position: static;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .search-section {
+    padding: 20px;
+  }
+
+  .search-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-container input[type="text"] {
+    width: 70%;
+    margin-right: 10px;
+  }
+
+  .search-container button {
+    padding: 10px 20px;
+  }
+
+  .categories-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+    width: 90%;
+  }
+
+  .category {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    font-size: 18px;
+  }
+
+  .category img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+  }  
+
+  .footer {
+    background-color: #333;
+    padding: 0;
+    text-align: center;
+    min-height: 50px;
+  }
+  
+  .footer img {
+    width: 50px; /* Фиксированная ширина */
+    height: 50px; /* Фиксированная высота */
+    object-fit: cover; /* Сохраняем пропорции изображения */
+  }
+}
