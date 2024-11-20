@@ -21,7 +21,7 @@ function getProducts($idcat) {
     $requete = $record->prepare("
         SELECT 
             id, 
-            libelle AS product_name, 
+            libelle, 
             prix,                   
             image                   
         FROM plat
@@ -31,5 +31,20 @@ function getProducts($idcat) {
     $requete->execute([$idcat]); 
     return $requete->fetchAll(PDO::FETCH_OBJ); 
 }
+function getAllProducts() {
+    global $record; // Подключаем глобальное соединение с базой
+    $requete = $record->prepare("
+        SELECT 
+            id, 
+            libelle, 
+            prix, 
+            image 
+        FROM plat
+        WHERE active = 'Yes'
+    ");
+    $requete->execute(); 
+    return $requete->fetchAll(PDO::FETCH_OBJ);
+}
+
 
 ?>

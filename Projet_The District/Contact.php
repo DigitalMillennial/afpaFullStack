@@ -83,8 +83,7 @@
               id="message"
               name="message"
               rows="4"
-              placeholder="Votre message"
-              required
+              placeholder="Votre message"              
             ></textarea>
             <div class="invalid-feedback">Ce champ est obligatoire</div>
           </div>

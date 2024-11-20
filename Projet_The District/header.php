@@ -23,7 +23,7 @@
       <ul>
         <li><a href="index.php">Accueil</a></li>
         <li><a href="/#categories-section">Catégorie</a></li>
-        <li><a href="Plats.php">Plats</a></li>
+        <li><a href="all_plats.php">Plats</a></li>
         <li><a href="Contact.php">Contact</a></li>
       </ul>
     </nav>

@@ -4,6 +4,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = htmlspecialchars($_POST['name']);
     $surname = htmlspecialchars($_POST['surname']);
     $email = htmlspecialchars($_POST['email']);
+    $phone = htmlspecialchars($_POST['phone']);
     $message = htmlspecialchars($_POST['message']);
 
     // Генерируем имя файла на основе текущей даты и времени
@@ -11,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fileName = $currentDateTime . '.txt';   // Имя файла будет например 2024-10-07-12-45-30.txt
 
     // Содержимое файла
-    $fileContent = "Nom: $name\nPrénom: $surname\nEmail: $email\nMessage: $message";
+    $fileContent = "Nom: $name\nPrénom: $surname\nPortable: $phone\nEmail: $email\nMessage: $message";
 
     // Записываем данные в файл
     file_put_contents($fileName, $fileContent);
