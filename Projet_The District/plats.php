@@ -7,7 +7,6 @@ include 'demande.php';
 $idcat = $_GET['id'];
 $products = getProducts($idcat); 
 // Получаем данные из базы
-
 ?>
 
 <main class="main-content">
@@ -19,7 +18,7 @@ $products = getProducts($idcat);
           <img src="/img/food/<?php echo htmlspecialchars($product->image); ?>" 
                alt="<?php echo htmlspecialchars($product->libelle); ?>">
           <!-- Название -->
-          <p><?php echo htmlspecialchars($product->libelle); ?></p>
+          <p class=""><?php echo htmlspecialchars($product->libelle); ?></p>
           <!-- Цена -->
           <p class="price"><?php echo number_format($product->prix, 2, ',', ' '); ?> €</p>
           <!-- Контролы заказа -->
@@ -33,8 +32,11 @@ $products = getProducts($idcat);
     </div>
   </section>
 </main>
+<a href="Contact.php" class="cart-button">
+  <i class="fa-solid fa-cart-shopping"></i>
+</a>
 
-<?php include 'footer.php'; ?>ы
+<?php include 'footer.php'; ?>
 
 
 <script src="js/script.js"></script>

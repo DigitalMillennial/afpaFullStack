@@ -188,8 +188,8 @@ nav ul li a {
 
 
 .category {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   text-align: center;
   background-color: #e0e0e0;
   display: flex;
@@ -267,7 +267,7 @@ nav ul li a {
 }
 
 .category:hover {
-  transform: scale(1.02);
+  transform: scale(1.02);box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
   background-color: #f0f0f0;
 }
@@ -308,6 +308,36 @@ nav ul li a {
   justify-content: space-between;
   align-items: center;
 }
+
+.cart-button {
+  position: fixed; /* Фиксированное положение */
+  right: 90px; /* Отступ от правого края */
+  bottom: 100px; /* Отступ от нижнего края */
+  background-color: #0056b3;/* Зеленый цвет кнопки */
+  font-size: 24px; /* Размер иконки */
+  width: 60px; /* Ширина кнопки */
+  height: 60px; /* Высота кнопки */
+  border-radius: 50%; /* Круглая кнопка */
+  display: flex; /* Центровка содержимого */
+  justify-content: center; /* Горизонтальная центровка */
+  align-items: center; /* Вертикальная центровка */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+  text-decoration: none; /* Убираем подчеркивание */
+  z-index: 1000; /* Поверх остальных элементов */
+  transition: background-color 0.3s ease; /* Плавный переход цвета кнопки */
+}
+
+.cart-button i {
+  color: #ffffff; /* Белый цвет корзинки */
+}
+
+.cart-button:hover {
+  width: 65px; 
+  height: 65px;
+  transform: scale(1.02);box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+  box-shadow: 0 12px 24px rgba(0.3, 0.3, 0.3, 0.3);
+}
+
 
 
 /* Адаптация для мобильных устройств */

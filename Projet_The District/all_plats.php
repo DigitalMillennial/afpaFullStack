@@ -34,6 +34,8 @@ $products = getAllProducts();
     </div>
   </section>
 </main>
-
+<a href="Contact.php" class="cart-button">
+  <i class="fa-solid fa-cart-shopping"></i>
+</a>
 <?php include 'footer.php'; ?>
 <script src="js/script.js"></script>
