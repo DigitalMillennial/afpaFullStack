@@ -14,6 +14,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="src/styles.css">
   <link rel="stylesheet" href="src/stylesContact.css">
+  <link rel="stylesheet" href="src/styles_politique.css">
+
 </head>
 <body>
   <header class="header-container">
