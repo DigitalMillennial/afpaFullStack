@@ -3,10 +3,11 @@ include 'header.php';
 include 'connection.php';
 include 'demande.php'; 
 
+// Экранирование входящего параметра id
+$idcat = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-$idcat = $_GET['id'];
+// Получаем данные из базы с учетом безопасности
 $products = getProducts($idcat); 
-// Получаем данные из базы
 ?>
 
 <main class="main-content">
@@ -15,12 +16,12 @@ $products = getProducts($idcat);
       <?php foreach ($products as $product): ?>
         <div class="category">
           <!-- Изображение -->
-          <img src="/img/food/<?php echo htmlspecialchars($product->image); ?>" 
-               alt="<?php echo htmlspecialchars($product->libelle); ?>">
+          <img src="/img/food/<?php echo htmlspecialchars($product->image, ENT_QUOTES, 'UTF-8'); ?>" 
+               alt="<?php echo htmlspecialchars($product->libelle, ENT_QUOTES, 'UTF-8'); ?>">
           <!-- Название -->
-          <p class=""><?php echo htmlspecialchars($product->libelle); ?></p>
+          <p class=""><?php echo htmlspecialchars($product->libelle, ENT_QUOTES, 'UTF-8'); ?></p>
           <!-- Цена -->
-          <p class="price"><?php echo number_format($product->prix, 2, ',', ' '); ?> €</p>
+          <p class="price"><?php echo number_format((float)$product->prix, 2, ',', ' '); ?> €</p>
           <!-- Контролы заказа -->
           <div class="order-controls">
             <button class="minus-btn" disabled>-</button>
@@ -37,6 +38,4 @@ $products = getProducts($idcat);
 </a>
 
 <?php include 'footer.php'; ?>
-
-
 <script src="js/script.js"></script>
