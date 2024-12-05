@@ -4,12 +4,14 @@ include 'demande.php'; ?>
 
 <section class="premier">
   <div class="overlay"></div>
-  <section>
-    <div class="search-container">
-      <input type="text" placeholder="Recherche...">
-      <button>Rechercher</button>
-    </div>
-  </section>
+    <section>
+      <div class="search-container">
+        <form method="GET" action="demande.php">
+            <input type="text" name="query" placeholder="Recherche...">
+            <button type="submit">Rechercher</button>
+        </form>
+      </div>
+    </section>
   
   <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
     <source src="/img/economiseur.mp4" type="video/mp4">

@@ -46,5 +46,44 @@ function getAllProducts() {
     return $requete->fetchAll(PDO::FETCH_OBJ);
 }
 
+// Функция для поиска товаров
+function searchProducts($query) {
+    global $record; // Используем подключение к базе данных
+
+    $requete = $record->prepare("
+        SELECT 
+            id, 
+            libelle, 
+            prix, 
+            image 
+        FROM plat
+        WHERE libelle LIKE :query OR description LIKE :query
+    ");
+    $requete->execute(['query' => '%' . $query . '%']); // Подставляем значение поиска
+    return $requete->fetchAll(PDO::FETCH_OBJ); // Возвращаем найденные результаты
+}
+
+// Проверяем, был ли отправлен запрос на поиск
+if (isset($_GET['query']) && !empty($_GET['query'])) {
+    $query = $_GET['query']; // Получаем строку поиска из параметров GET
+    $searchResults = searchProducts($query); // Вызываем функцию поиска
+
+    // Выводим результаты поиска
+    if (!empty($searchResults)) {
+        echo "<h2>Результаты поиска:</h2>";
+        foreach ($searchResults as $product) {
+            echo "<div class='product'>";
+            echo "<h3>" . htmlspecialchars($product->libelle) . "</h3>";
+            echo "<p>Цена: " . htmlspecialchars($product->prix) . " €</p>";
+            echo "<img src='/img/food/" . htmlspecialchars($product->image) . "' alt='Изображение товара'>";
+            echo "</div>";
+        }
+    } else {
+        echo "<p>Ничего не найдено</p>";
+    }
+} elseif (isset($_GET['query'])) {
+    // Если запрос пустой
+    echo "<p>Введите запрос для поиска</p>";
+}
 
 ?>
